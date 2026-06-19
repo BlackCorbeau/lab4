@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: web-app
+data:
+  LB_IP: "0.0.0.0"   # будет заменено пайплайном
