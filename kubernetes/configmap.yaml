@@ -4,4 +4,4 @@ metadata:
   name: app-config
   namespace: web-app
 data:
-  LB_IP: "0.0.0.0"   # будет заменено пайплайном
+  LB_IP: "95.163.215.1"
