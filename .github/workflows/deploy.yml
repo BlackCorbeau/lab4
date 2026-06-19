@@ -39,8 +39,8 @@ jobs:
           TF_VAR_vkcs_project_id: ${{ secrets.VKCS_PROJECT_ID }}
           TF_VAR_vkcs_region: ${{ secrets.VKCS_REGION }}
           TF_VAR_vkcs_auth_url: ${{ secrets.VKCS_AUTH_URL }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}      # <-- Добавить
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_KEY }}  # <-- Добавить
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_KEY }}
 
       - name: Terraform Validate
         run: terraform validate
@@ -64,6 +64,8 @@ jobs:
           TF_VAR_vkcs_auth_url: ${{ secrets.VKCS_AUTH_URL }}
           TF_VAR_my_ip: ${{ secrets.MY_IP }}
           TF_VAR_ssh_public_key: "~/.ssh/id_rsa.pub"
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_KEY }}
 
       - name: Upload Plan
         uses: actions/upload-artifact@v4
@@ -118,6 +120,8 @@ jobs:
           TF_VAR_vkcs_project_id: ${{ secrets.VKCS_PROJECT_ID }}
           TF_VAR_vkcs_region: ${{ secrets.VKCS_REGION }}
           TF_VAR_vkcs_auth_url: ${{ secrets.VKCS_AUTH_URL }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_KEY }}
 
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
@@ -130,8 +134,10 @@ jobs:
           TF_VAR_vkcs_auth_url: ${{ secrets.VKCS_AUTH_URL }}
           TF_VAR_my_ip: ${{ secrets.MY_IP }}
           TF_VAR_ssh_public_key: "~/.ssh/id_rsa.pub"
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_KEY }}
 
-      # --- ИНТЕГРАЦИЯ С ARGOCD (добавленный шаг) ---
+      # --- Интеграция с ArgoCD: обновление ConfigMap ---
       - name: Update ConfigMap for ArgoCD
         run: |
           cd ${{ env.TF_ROOT }}
@@ -149,3 +155,5 @@ jobs:
           TF_VAR_vkcs_project_id: ${{ secrets.VKCS_PROJECT_ID }}
           TF_VAR_vkcs_region: ${{ secrets.VKCS_REGION }}
           TF_VAR_vkcs_auth_url: ${{ secrets.VKCS_AUTH_URL }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_KEY }}
