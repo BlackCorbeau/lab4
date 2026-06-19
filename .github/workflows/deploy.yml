@@ -39,6 +39,8 @@ jobs:
           TF_VAR_vkcs_project_id: ${{ secrets.VKCS_PROJECT_ID }}
           TF_VAR_vkcs_region: ${{ secrets.VKCS_REGION }}
           TF_VAR_vkcs_auth_url: ${{ secrets.VKCS_AUTH_URL }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}      # <-- Добавить
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_KEY }}  # <-- Добавить
 
       - name: Terraform Validate
         run: terraform validate
