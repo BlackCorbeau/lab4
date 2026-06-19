@@ -83,3 +83,4 @@ weSuC1mk3y7zG3Hp
 nix-shell ❯ kubectl port-forward svc/argocd-server -n argocd 8080:443                                                                                                        on ☁️  (ru-msk)
 Forwarding from 127.0.0.1:8080 -> 8080
 Forwarding from [::1]:8080 -> 8080
+
