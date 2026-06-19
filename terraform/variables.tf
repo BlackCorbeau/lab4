@@ -7,7 +7,7 @@ variable "my_ip" {
 variable "project_name" {
   description = "Префикс для имен ресурсов"
   type        = string
-  default     = "lab3"
+  default     = "lab4"
 }
 
 variable "router_id" {
